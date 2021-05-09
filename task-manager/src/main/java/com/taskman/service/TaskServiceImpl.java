@@ -44,6 +44,11 @@ public class TaskServiceImpl implements TaskService{
 	public Optional <Task> getTask(Long id) {
 		return taskRepository.findById(id);
 	}
+
+	@Override
+	public Iterable<Task> getTasksByStatus(String status) {
+		return taskRepository.findByStatus(status);
+	}
 	
 	
 

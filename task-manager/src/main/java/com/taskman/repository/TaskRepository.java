@@ -9,5 +9,7 @@ import com.taskman.entity.Task;
 public interface TaskRepository extends CrudRepository<Task, Long> {
 	
 	List <Task> findByName(String name);
+	
+	List <Task> findByStatus(String status);
 
 }

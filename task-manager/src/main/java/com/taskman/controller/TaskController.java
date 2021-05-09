@@ -31,6 +31,11 @@ public class TaskController {
 	public @NotNull Iterable<Task> getTasks() {
 		return taskService.getAllTasks();
 	}
+	
+	@GetMapping(value = { "", "/tasks/{status}" })
+	public @NotNull Iterable<Task> getTasksByStatus(@PathVariable("status") String status) {
+		return taskService.getTasksByStatus(status);
+	}	
 
 	@GetMapping(value = { "", "/task/{id}" })
 	public @NotNull ResponseEntity<Task> getTask(@PathVariable("id") Long id) {

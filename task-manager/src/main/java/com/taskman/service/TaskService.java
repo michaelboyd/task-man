@@ -19,6 +19,8 @@ public interface TaskService {
 	Iterable<Task> getAllTasks();
 	
 	Optional <Task> getTask(Long id);
+	
+	Iterable<Task> getTasksByStatus(String status);
 
     Task update(@NotNull(message = "The task cannot be null.") @Valid Task task);
     

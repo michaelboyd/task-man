@@ -31,19 +31,31 @@ public class TaskManagerApplication {
 			userService.getAllUsers().forEach(System.out::println);
 			
 			Stream.of(
-					"Create Spring Boot Project", 
-					"Add any non-starter dependencies", 
-					"Configure Database", 
-					"Create Custom Exception Handler", 
-					"Create Entities and Repositotires",
-					"Create Services",
-					"Create Controllers",
-					"Cretae Tests",
 					"Create Frontend"
 					).forEach(name -> {
 				Task task = new Task(name, TaskStatus.NEW.name());
 				taskService.create(task);
+			});
+			Stream.of(
+					"Configure Database", 
+					"Create Entities and Repositotires",
+					"Create Services",
+					"Create Controllers"
+					).forEach(name -> {
+				Task task = new Task(name, TaskStatus.IN_PROGRESS.name());
+				taskService.create(task);
+			});
+			Stream.of(
+					"Create Spring Boot Project", 
+					"Add any non-starter dependencies", 
+					"Create Custom Exception Handler", 
+					"Create Tests"
+					).forEach(name -> {
+				Task task = new Task(name, TaskStatus.COMPLETE.name());
+				taskService.create(task);
 			});			
+			
+			
 			taskService.getAllTasks().forEach(System.out::println);
 			
 		};
