@@ -25,7 +25,7 @@ public class TaskManagerApplication {
 		return args -> {
 			
 			Stream.of("Michael", "David", "Alice", "Leslie", "Jesslie", "Rachael").forEach(name -> {
-				User user = new User(name);
+				User user = new User(name, name.toLowerCase() + "@email.com");
 				userService.create(user);
 			});
 			userService.getAllUsers().forEach(System.out::println);

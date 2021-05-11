@@ -1,5 +1,7 @@
 package com.taskman.service;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -15,7 +17,7 @@ public interface UserService {
 
 	User create(@NotNull(message = "The user cannot be null.") @Valid User user);
 	
-	User getUser(Long id);
+	Optional <User> findById(Long id);
 
 
 }

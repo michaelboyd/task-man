@@ -1,6 +1,7 @@
 package com.taskman.service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -34,8 +35,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(Long id) {
-		return userRepository.findById(id).get();
+	public Optional<User> findById(Long id) {
+		return userRepository.findById(id);
 	}
+	
+	
 
 }
