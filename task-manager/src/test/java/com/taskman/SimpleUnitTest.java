@@ -3,10 +3,11 @@ package com.taskman;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 //@SpringBootTest
-class TaskManagerApplicationTests {
+class SimpleUnitTest {
+	
+	//simple unit testing example
 	
 	Calculator underTest = new Calculator();
 

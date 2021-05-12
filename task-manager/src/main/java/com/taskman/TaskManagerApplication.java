@@ -20,7 +20,7 @@ public class TaskManagerApplication {
 		SpringApplication.run(TaskManagerApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	CommandLineRunner runner(UserService userService, TaskService taskService) {
 		return args -> {
 			

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import com.taskman.entity.User;
+import com.taskman.exception.BadRequestException;
 import com.taskman.repository.UserRepository;
 
 @Service
@@ -29,6 +30,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User create(@NotNull(message = "The user cannot be null.") @Valid User user) {
+		Boolean emailExists = userRepository.selectExistsEmail(user.getEmail());
+		if(emailExists ) {
+			throw new BadRequestException("Email " + user.getEmail() + " is not available");
+		}
 		user.setCreateDate(LocalDate.now());
 		user.setUpdateDate(LocalDate.now());
 		return userRepository.save(user);
@@ -38,7 +43,10 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> findById(Long id) {
 		return userRepository.findById(id);
 	}
-	
-	
 
+	@Override
+	public void delete(@NotNull(message = "The user cannot be null.") @Valid User user) {
+		userRepository.delete(user);
+	}
+	
 }

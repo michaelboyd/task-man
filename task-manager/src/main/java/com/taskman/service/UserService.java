@@ -18,6 +18,8 @@ public interface UserService {
 	User create(@NotNull(message = "The user cannot be null.") @Valid User user);
 	
 	Optional <User> findById(Long id);
+	
+	void delete(@NotNull(message = "The user cannot be null.") @Valid User user);
 
 
 }
