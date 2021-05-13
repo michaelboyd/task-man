@@ -1,4 +1,4 @@
-package com.taskman.repository;
+package com.taskman.repository.it;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import com.taskman.entity.User;
+import com.taskman.repository.UserRepository;
 
 @DataJpaTest
 public class UserRepositoryIT {

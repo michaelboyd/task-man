@@ -18,7 +18,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.taskman.entity.Task;
 import com.taskman.entity.TaskStatus;
-import com.taskman.entity.User;
 import com.taskman.repository.TaskRepository;
 import com.taskman.service.TaskService;
 import com.taskman.service.TaskServiceImpl;

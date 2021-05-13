@@ -61,27 +61,27 @@ public class TaskControllerTest {
 		assertThat(tasks.length == 1);
 	}
 
-	@Test
-	@Disabled
-	void testUpdateTaskStatusAndUser() throws Exception {
-		ResponseEntity<Task> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/task/1",
-				Task.class);
-		// given existing task and user
-		Task task = response.getBody();
-		assertThat(task).isNotNull();
-		User user = userService.findById(1L).get();
-		// when update the status and user
-		task.setStatus(TaskStatus.IN_PROGRESS.name());
-		task.setUser(user);
-		restTemplate.execute("http://localhost:" + port + "/api/task/1", HttpMethod.PUT, requestCallback(task),
-				clientHttpResponse -> null);
-		
-		response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/task/1", Task.class);
-		task = response.getBody();
-		//then task is in progress and user is not null
-		assertThat(task.getStatus()).isEqualTo("IN_PROGRESS");
-		assertThat(task.getUser()).isNotNull();
-	}
+//	@Test
+//	@Disabled
+//	void testUpdateTaskStatusAndUser() throws Exception {
+//		ResponseEntity<Task> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/task/1",
+//				Task.class);
+//		// given existing task and user
+//		Task task = response.getBody();
+//		assertThat(task).isNotNull();
+//		User user = userService.findById(1L).get();
+//		// when update the status and user
+//		task.setStatus(TaskStatus.IN_PROGRESS.name());
+//		task.setUser(user);
+//		restTemplate.execute("http://localhost:" + port + "/api/task/1", HttpMethod.PUT, requestCallback(task),
+//				clientHttpResponse -> null);
+//		
+//		response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/task/1", Task.class);
+//		task = response.getBody();
+//		//then task is in progress and user is not null
+//		assertThat(task.getStatus()).isEqualTo("IN_PROGRESS");
+//		assertThat(task.getUser()).isNotNull();
+//	}
 
 	RequestCallback requestCallback(final Task updatedInstance) {
 		return clientHttpRequest -> {
