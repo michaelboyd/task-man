@@ -34,6 +34,7 @@ public class TaskRepositoryTest {
 		
 		// then
 		assertThat(tasks).isNotEmpty();
+		
 	}
 	
 	@Test
