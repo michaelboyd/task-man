@@ -7,9 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.taskman.entity.Hero;
 import com.taskman.entity.Task;
 import com.taskman.entity.TaskStatus;
 import com.taskman.entity.User;
+import com.taskman.service.HeroService;
 import com.taskman.service.TaskService;
 import com.taskman.service.UserService;
 
@@ -20,8 +22,8 @@ public class TaskManagerApplication {
 		SpringApplication.run(TaskManagerApplication.class, args);
 	}
 
-	//@Bean
-	CommandLineRunner runner(UserService userService, TaskService taskService) {
+	@Bean
+	CommandLineRunner runner(UserService userService, TaskService taskService, HeroService heroService) {
 		return args -> {
 			
 			Stream.of("Michael", "David", "Alice", "Leslie", "Jesslie", "Rachael").forEach(name -> {
@@ -29,6 +31,12 @@ public class TaskManagerApplication {
 				userService.create(user);
 			});
 			userService.getAllUsers().forEach(System.out::println);
+			
+			Stream.of("Michael", "David", "Alice", "Leslie", "Jesslie", "Rachael").forEach(name -> {
+				Hero hero = new Hero(name);
+				heroService.create(hero);
+			});
+			heroService.getHeroes().forEach(System.out::println);			
 			
 			Stream.of(
 					"Create Frontend"
