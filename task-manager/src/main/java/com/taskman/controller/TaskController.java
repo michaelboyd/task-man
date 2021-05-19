@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.taskman.entity.Hero;
 import com.taskman.entity.Task;
 import com.taskman.service.TaskService;
 
@@ -34,12 +36,12 @@ public class TaskController {
 		return taskService.getAllTasks();
 	}
 	
-	@GetMapping(value = { "", "/tasks/{status}" })
-	public @NotNull Iterable<Task> getTasksByStatus(@PathVariable("status") String status) {
+	@RequestMapping(value = "/tasks", params = "status")
+	public @NotNull Iterable<Task> getTasksByStatus(@RequestParam("status") String status) {
 		return taskService.getTasksByStatus(status.toUpperCase());
-	}	
+	}
 
-	@GetMapping(value = { "", "/task/{id}" })
+	@GetMapping(value = { "", "/tasks/{id}" })
 	public @NotNull ResponseEntity<Task> getTask(@PathVariable("id") Long id) {
 		Optional<Task> task = taskService.getTask(id);
 		if (task.isPresent()) {
@@ -49,7 +51,7 @@ public class TaskController {
 		}
 	}
 
-	@PutMapping(value = { "", "/task/{id}" })
+	@PutMapping(value = { "", "/tasks/{id}" })
 	public ResponseEntity<Task> updateTask(@PathVariable("id") long id, @RequestBody Task task) {
 		Optional<Task> taskData = taskService.getTask(id);
 
@@ -64,6 +66,8 @@ public class TaskController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	
 	
 	
 

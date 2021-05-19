@@ -26,7 +26,7 @@ public class TaskManagerApplication {
 	CommandLineRunner runner(UserService userService, TaskService taskService, HeroService heroService) {
 		return args -> {
 			
-			Stream.of("Michael", "David", "Alice", "Leslie", "Jesslie", "Rachael").forEach(name -> {
+			Stream.of("Dick", "Tom", "Harry", "Jane", "Sally", "Susan").forEach(name -> {
 				User user = new User(name, name.toLowerCase() + "@email.com");
 				userService.create(user);
 			});

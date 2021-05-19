@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.taskman.entity.Task;
 import com.taskman.entity.User;
 
 @Validated
@@ -20,6 +21,8 @@ public interface UserService {
 	Optional <User> findById(Long id);
 	
 	void delete(@NotNull(message = "The user cannot be null.") @Valid User user);
+	
+	User update(@NotNull(message = "The user cannot be null.") @Valid User user);
 
 
 }

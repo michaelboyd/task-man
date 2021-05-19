@@ -48,5 +48,12 @@ public class UserServiceImpl implements UserService {
 	public void delete(@NotNull(message = "The user cannot be null.") @Valid User user) {
 		userRepository.delete(user);
 	}
+
+	@Override
+	public User update(@NotNull(message = "The user cannot be null.") @Valid User user) {
+		// TODO Auto-generated method stub
+		user.setUpdateDate(LocalDate.now());
+		return userRepository.save(user);
+	}
 	
 }

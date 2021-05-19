@@ -20,9 +20,9 @@ public class User {
    
     @NotNull(message = "User name is required.")
     @Basic(optional = false)
-    private final String name;
+    private String name;
     
-    private final String email;
+    private String email;
     
     @JsonFormat(pattern = "dd/MM/yyyy") 
     private LocalDate createDate;
@@ -40,7 +40,11 @@ public class User {
 		this.name = name;
 		this.email = email;
 	}
-
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +76,8 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -88,6 +94,10 @@ public class User {
 		builder.append(updateDate);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
 	
