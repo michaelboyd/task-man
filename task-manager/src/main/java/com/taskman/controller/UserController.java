@@ -37,10 +37,11 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 
-	@PostMapping("/users")
+	@PostMapping(value = { "", "/users" })
 	public ResponseEntity <User> newUser(@RequestBody User user) {
 		HttpStatus status = HttpStatus.CREATED;
 		User created = userService.create(user);
+		created.setCreateDate(LocalDate.now());
 		return new ResponseEntity<>(created, status);
 	}
 	
@@ -60,6 +61,7 @@ public class UserController {
 		if (userData.isPresent()) {
 			User _user = userData.get();
 			_user.setName(user.getName());
+			_user.setEmail(user.getEmail());
 			_user.setUpdateDate(LocalDate.now());
 			return new ResponseEntity<>(userService.update(_user), HttpStatus.OK);
 		} else {

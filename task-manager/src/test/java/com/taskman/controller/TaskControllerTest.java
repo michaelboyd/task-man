@@ -55,7 +55,7 @@ public class TaskControllerTest {
 
 	@Test
 	void testTasksByStatus() throws Exception {
-		ResponseEntity<Task[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/tasks/NEW",
+		ResponseEntity<Task[]> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api/tasks?status=NEW",
 				Task[].class);
 		Task[] tasks = response.getBody();
 		assertThat(tasks.length == 1);

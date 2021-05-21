@@ -18,6 +18,10 @@ public class Hero {
     @Basic(optional = false)
     private String name;
     
+    private String power;
+    
+    private String alterEgo;
+    
 	public Hero() {
 		super();
 		name = "unknown";
@@ -39,8 +43,25 @@ public class Hero {
 		return name;
 	}
 	
-	
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPower() {
+		return power;
+	}
+
+	public void setPower(String power) {
+		this.power = power;
+	}
+
+	public String getAlterEgo() {
+		return alterEgo;
+	}
+
+	public void setAlterEgo(String alterEgo) {
+		this.alterEgo = alterEgo;
+	}
 
 	@Override
 	public String toString() {
@@ -49,12 +70,12 @@ public class Hero {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", power=");
+		builder.append(power);
+		builder.append(", alterEgo=");
+		builder.append(alterEgo);
 		builder.append("]");
 		return builder.toString();
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	

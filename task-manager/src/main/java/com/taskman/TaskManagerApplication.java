@@ -26,13 +26,13 @@ public class TaskManagerApplication {
 	CommandLineRunner runner(UserService userService, TaskService taskService, HeroService heroService) {
 		return args -> {
 			
-			Stream.of("Dick", "Tom", "Harry", "Jane", "Sally", "Susan").forEach(name -> {
+			Stream.of("Leonard", "Sheldon", "Rajesh", "Howard", "Penny", "Amy", "Bernadette").forEach(name -> {
 				User user = new User(name, name.toLowerCase() + "@email.com");
 				userService.create(user);
 			});
 			userService.getAllUsers().forEach(System.out::println);
 			
-			Stream.of("Michael", "David", "Alice", "Leslie", "Jesslie", "Rachael").forEach(name -> {
+			Stream.of("Dan", "Michael", "David", "Alice", "Leslie", "Jessie", "Rachael").forEach(name -> {
 				Hero hero = new Hero(name);
 				heroService.create(hero);
 			});

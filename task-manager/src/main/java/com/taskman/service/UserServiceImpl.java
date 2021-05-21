@@ -34,8 +34,6 @@ public class UserServiceImpl implements UserService {
 		if(emailExists ) {
 			throw new BadRequestException("Email " + user.getEmail() + " is not available");
 		}
-		user.setCreateDate(LocalDate.now());
-		user.setUpdateDate(LocalDate.now());
 		return userRepository.save(user);
 	}
 
@@ -51,8 +49,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User update(@NotNull(message = "The user cannot be null.") @Valid User user) {
-		// TODO Auto-generated method stub
-		user.setUpdateDate(LocalDate.now());
 		return userRepository.save(user);
 	}
 	
