@@ -1,0 +1,55 @@
+<h2>Tasks</h2>
+
+<div>
+	
+	<label>Filter by Status:&nbsp;</label>
+
+	<button title="New Tasks"
+    (click)="getTasksByStatus('NEW')">New</button>  
+	
+	&nbsp;
+
+	<button title="In Progress Tasks"
+    (click)="getTasksByStatus('IN_PROGRESS')">In Progress</button> 	
+
+	&nbsp;
+
+	<button title="Complete Tasks"
+    (click)="getTasksByStatus('COMPLETE')">Complete</button> 	
+
+	&nbsp;
+
+	<button title="All Tasks"
+    (click)="getTasks()">All</button> 
+	
+	<label>&nbsp;or&nbsp;</label>
+
+	<button title="Create Task"
+    (click)="createTask()">Create Task</button>
+	
+
+</div>
+
+<div>&nbsp;</div>
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="row card-deck">
+			<div class="col-lg-4 col-md-6 mb-4" *ngFor="let task of tasks">
+				<div class="card text-center">
+					<div class="card-header">
+						<h4>{{task.name}}</h4>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">{{task.status}}</h5>					
+						<div class="row">
+							<a class="nav-link" routerLink="/tasks/detail/{{task.id}}">
+								Edit
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

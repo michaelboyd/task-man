@@ -1,0 +1,33 @@
+<h2>Heroes</h2>
+
+<!-- <div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName /> -->
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <!-- <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button> -->
+<!-- </div> -->
+
+<!-- <div>
+
+  <app-hero-form></app-hero-form>
+
+</div> -->
+
+<!-- <a routerLink="/heroes/create">Create Hero</a> -->
+
+<button title="Create Task"
+    (click)="createHero()">Create Hero</button>
+
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/heroes/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>   
+    <button class="delete" title="delete hero"
+    (click)="delete(hero)">x</button>     
+  </li>
+</ul>

@@ -1,0 +1,32 @@
+<div *ngIf="task">
+
+    <h2>{{task.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{task.id}}</div>
+    <!-- <div><span>created: </span>{{ task.createDate }}</div>
+    <div><span>updated: </span>{{ task.updateDate }}</div> -->
+    
+    <div>
+        <label for="task-name">Name: </label>
+        <input id="task-name" [(ngModel)]="task.name" placeholder="name">
+    </div>
+
+    <div>
+        <label for="task-status">Status: </label>
+        <select class="form-control" id="task-status" required [(ngModel)]="task.status" name="status">
+            <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="task-user">User: </label>
+        <select class="form-control" id="task-user" required [(ngModel)]="task.user" name="user">
+            <option *ngFor="let user of users" [value]="user">{{user.name}}</option>
+        </select>
+    </div>
+
+
+</div>
+
+<button (click)="goBack()">go back</button>
+
+<button (click)="save()">save</button>
